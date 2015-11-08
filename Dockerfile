@@ -1,4 +1,4 @@
-FROM yutakakinjyo/gtest
+FROM centos:6
 
 MAINTAINER Yutaka Kinjo <yutakakinjyo@gmail.com>
 
@@ -9,7 +9,8 @@ WORKDIR $PROJECT
 
 ADD . $PROJECT
 
-RUN mkdir build; \
+RUN yum install cmake gcc gcc-c++ -y;\
+    mkdir build; \
     cd build; \
     cmake -Dtest=ON ..;\
     make
