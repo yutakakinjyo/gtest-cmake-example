@@ -13,6 +13,9 @@ set(CMAKE_CXX_FLAGS "-g -Wall")
 # include_directories(${COMMON_INCLUDES}) in other CMakeLists.txt files.
 # set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
 
+find_package(Boost)
+include_directories(${Boost_INCLUDE_DIRS})
+
 ################################
 # Normal Libraries & Executables
 ################################
@@ -23,6 +26,7 @@ add_executable(project1 main.cpp)
 # used elsewhere.
 
 target_link_libraries(project1 project1_lib)
+target_link_libraries(project1 ${Boost_LIBRAIES})
 
 ################################
 # Testing
