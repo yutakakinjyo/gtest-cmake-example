@@ -5,10 +5,9 @@ machine:
     version: 2.2.2
 
 dependencies:
-  override:
-   cache_directories:
+  cache_directories:
     - "vendor/bundle"
-   override:
+  override:
     - docker build -t test .
     - bundle -j4 --path=vendor/bundle
 test:
