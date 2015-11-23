@@ -6,9 +6,12 @@ machine:
 
 dependencies:
   override:
+   cache_directories:
+    - "vendor/bundle"
+   override:
     - docker build -t test .
+    - bundle -j4 --path=vendor/bundle
 test:
   override:
     - docker run test /bin/sh -c 'cd build; make test'
-    - bundle
     - bundle exec rspec
