@@ -18,6 +18,11 @@ execute_process(
 
 
 execute_process(
-  COMMAND make
+  COMMAND ctest
   WORKING_DIRECTORY ${build_dir}
+  RESULT_VARIABLE test_result
 )
+
+if(${test_result})
+  message(FATAL_ERROR "test failed")
+endif()
