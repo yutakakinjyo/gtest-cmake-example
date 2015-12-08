@@ -5,8 +5,12 @@ machine:
     version: 2.2.2
 
 dependencies:
+  cache_directories:
+    - "~/docker"
   override:
+    - if [[ -e ~/docker/image.tar ]]; then docker load -i ~/docker/image.tar; fi
     - docker build -t test .
+    - mkdir -p ~/docker; docker save test > ~/docker/image.tar
 test:
   override:
     - docker run --rm -v ${PWD}:/project/repo -it test /bin/sh -c 'cd repo; cmake -P build.cmake'
