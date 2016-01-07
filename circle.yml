@@ -16,5 +16,5 @@ test:
     - git config --global user.email "yutakakinjyo@gmail.com"
     - git config --global user.name "yutakakinjyo"
     - git add hoge.txt
-    - git commit -m "add hoge"
+    - git commit -m "add hoge [ci skip]"
     - git push origin `git rev-parse --abbrev-ref HEAD`
