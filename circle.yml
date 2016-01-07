@@ -18,3 +18,8 @@ test:
     - git add hoge.txt
     - git commit -m "add hoge [ci skip]"
     - git push origin `git rev-parse --abbrev-ref HEAD`
+    - git diff HEAD^ HEAD > report.txt
+general:
+  artifacts:
+    - "report.txt"
+	
