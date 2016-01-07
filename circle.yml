@@ -3,7 +3,6 @@ machine:
     - docker
   ruby:
     version: 2.2.2
-
 dependencies:
   override:
     - docker build -t test .
@@ -12,4 +11,8 @@ test:
     - docker run --rm -v ${PWD}:/project/repo -it test /bin/sh -c 'cd repo; cmake -P build.cmake'
     - bundle
     - bundle exec rspec
-    - git checkout master
+    - mkdir report
+    - git diff HEAD^ HEAD > report/report.txt
+general:
+  artifacts:
+    - "report"
