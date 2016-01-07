@@ -11,8 +11,10 @@ test:
     - docker run --rm -v ${PWD}:/project/repo -it test /bin/sh -c 'cd repo; cmake -P build.cmake'
     - bundle
     - bundle exec rspec
-    - mkdir report
-    - git diff HEAD^ HEAD > report/report.txt
-general:
-  artifacts:
-    - "report"
+    - touch hoge.txt
+    - echo "hoge" >> hoge.txt
+    - git config --global user.email "yutakakinjyo@gmail.com"
+    - git config --global user.name "yutakakinjyo"
+    - git add hoge.txt
+    - git commit -m "add hoge"
+    - git push origin `git rev-parse --abbrev-ref HEAD`
