@@ -12,3 +12,4 @@ test:
     - docker run --rm -v ${PWD}:/project/repo -it test /bin/sh -c 'cd repo; cmake -P build.cmake'
     - bundle
     - bundle exec rspec
+    - git checkout master
