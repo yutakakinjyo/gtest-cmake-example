@@ -3,7 +3,6 @@ machine:
     - docker
   ruby:
     version: 2.2.2
-
 dependencies:
   cache_directories:
     - "~/docker"
@@ -16,3 +15,14 @@ test:
     - docker run -v ${PWD}:/project/repo -it test /bin/sh -c 'cd repo; cmake -P build.cmake'
     - bundle
     - bundle exec rspec
+    - touch hoge.txt
+    - echo "hoge" >> hoge.txt
+    - git config --global user.email "yutakakinjyo@gmail.com"
+    - git config --global user.name "yutakakinjyo"
+    - git add hoge.txt
+    - git commit -m "add hoge [ci skip]"
+    - git push origin `git rev-parse --abbrev-ref HEAD`
+    - git diff HEAD^ HEAD > report.txt
+general:
+  artifacts:
+    - "report.txt"
