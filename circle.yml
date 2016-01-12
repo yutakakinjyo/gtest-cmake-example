@@ -25,4 +25,4 @@ test:
     - git diff HEAD^ HEAD > report.txt
 general:
   artifacts:
-    - "report.txt"
+    - "index.html"
